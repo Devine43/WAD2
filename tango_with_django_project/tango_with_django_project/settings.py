@@ -18,6 +18,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #Generates the path for the templates directory
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
+#Generates the path for the static directory
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+#Generates the path for the media directory
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -66,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -103,6 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Stores the locations of where static files are stored.
+STATICFILES_DIRS = [STATIC_DIR]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -116,6 +125,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html>
+
+	<head> 
+	<title>Rango</title>
+	</head>
+	
+	<body>
+	<h1> Rango says here is the about page </h1>
+	
+	<div>
+	     Did you know that... <br/>
+	     <strong>{{boldmessage}}</strong> <br/>
+	     are all types of lizards ?
+
+	</div> 
+	
+	<div>
+		<a href='/rango/'>Index</a> <br/>
+		<img src ="{% static "images/lizard.jpg"%}"
+			alt ="Picture of Lizard"/>
+	</div>
+	
+	<div>
+		<img src="{{MEDIA_URL}}cat.jpg" 
+			alt="Picture of a cat"/>
+	</div>
+	<h3>This tutorial has been put together by John Devine </h3>	
+	</body>
+
+</hyml>
