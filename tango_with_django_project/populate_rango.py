@@ -19,7 +19,7 @@ def populate():
         {"title":"How to Think like a Computer Scientist",
           "url":"http://www.greenteapress.com/thinkpython/"},
         {"title":"Learn Python in 10 Minutes",
-          "url":"http://www.korokithakis.net/tutorials/python/"} ]
+          "url":"http://www.korokithakis.net/tutorials/python/"}]
 
     django_pages = [
         {"title":"Official Django Tutorial",
@@ -35,9 +35,9 @@ def populate():
         {"title":"Flask",
          "url":"http://flask.pocoo.org"} ]
 
-    cats = {"Python": {"pages": python_pages},
-            "Django": {"pages": django_pages},
-            "Other Frameworks": {"pages": other_pages}}
+    cats = {"Python": {"pages": python_pages, "views": 128, "likes": 64},
+            "Django": {"pages": django_pages, "views": 64, "likes": 32},
+            "Other Frameworks": {"pages": other_pages, "views": 32, "likes": 16}}
  # If you want to add more catergories or pages,
 
 
@@ -50,7 +50,7 @@ def populate():
  # for more information about how to iterate over a dictionary properly.
 
     for cat, cat_data in cats.iteritems():
-        c = add_cat(cat)
+        c = add_cat(cat,cat_data['views'], cat_data['likes'])
         for p in cat_data["pages"]:
             add_page(c, p["title"], p["url"])
 
@@ -66,8 +66,10 @@ def add_page(cat, title, url, views=0):
     p.save()
     return p
 
-def add_cat(name):
+def add_cat(name, views, likes):
     c = Category.objects.get_or_create(name=name)[0]
+    c.views = views
+    c.likes = likes
     c.save()
     return c
 
