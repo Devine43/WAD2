@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-{%load staticfiles%}
-<html>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
 
-	<head> 
-	<title>Rango</title>
-	</head>
-	
-	<body>
+
+{% block title_block %}
+	About
+{% endblock %}
+
+{% block body_block %}
+
 	<h1> Rango says here is the about page </h1>
 	
 	<div>
@@ -17,7 +18,7 @@
 	</div> 
 	
 	<div>
-		<a href='/rango/'>Index</a> <br/>
+
 		<img src="{% static "images/lizard.jpg" %}"
 			alt ="Picture of Lizard"/>
 	</div>
@@ -27,6 +28,4 @@
 			alt="Picture of a cat"/>
 	</div>
 	<h3>This tutorial has been put together by John Devine </h3>	
-	</body>
-
-</html>
+{% endblock %}
