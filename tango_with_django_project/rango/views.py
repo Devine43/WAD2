@@ -161,6 +161,7 @@ def register(request):
 
 
 def user_login(request):
+    context_dict = {}
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
 
@@ -177,20 +178,22 @@ def user_login(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('index'))
             else:
-                return HttpResponse("Your Rango account is disabled.")
+                context_dict['disabled'] = True
+                return render(request, 'rango/login.html', context_dict)
         else:
 
             print("Invalid login details: {0}, {1}".format(username, password))
-            return HttpResponse("Invalid login details supplied.")
+            context_dict['invalid_login'] = True
+            return render(request, 'rango/login.html', context_dict)
 
     else:
 
-        return render(request, 'rango/login.html', {})
+        return render(request, 'rango/login.html', context_dict)
 
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+    return render(request, 'rango/restricted.html')
 
 
 @login_required
