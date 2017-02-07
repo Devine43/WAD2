@@ -1,7 +1,7 @@
-1 <ul>
-2 {% if cats %}
-3   {% for c in cats %}
-4
+ <ul>
+ {% if cats %}
+   {% for c in cats %}
+
         {% if c == act_cat %}
             <li>
             <strong>
@@ -14,8 +14,8 @@
             </li>
         {% endif %}
 
-5   {% endfor %}
-6 {% else %}
-7   <li> <strong>There are no categories present.</strong></li>
-8 {% endif %}
-9 </ul>
+   {% endfor %}
+ {% else %}
+   <li> <strong>There are no categories present.</strong></li>
+ {% endif %}
+ </ul>
